@@ -3,6 +3,7 @@ var session = require('marvin-js').session;
 var chalk = require("chalk");
 var assert = require("chai").assert;
 var clickOnElement = require('../utils/clickOnElement');
+var generateUserName = require('../utils/generateUniqueUsername');
 var homePage = require('../pages/home-page');
 
 exports.define = function (steps) {
@@ -41,11 +42,12 @@ exports.define = function (steps) {
      * @type Step
      * @description Should be used to click on the login button.
      * */
-    steps.when(/I fill the email field with $email/, function (email) {
+    steps.when(/I fill the email field with $email/, function () {
 
         //var driver = session.getDriver();
         //driver.sleep(4000);
-        email = email || "test.us@yoox.com";
+        username = generateUserName();
+        email = username || "test.us@yoox.com";
         homePage.loginRegistrationLayer.registerEmailInput.sendKeys(email);
         homePage.loginRegistrationLayer.registerEmailConfirm.sendKeys(email);
     });

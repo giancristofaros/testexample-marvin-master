@@ -1,4 +1,4 @@
-@dev
+@wip
 Feature: The login process is working properly
     
     Scenario: Visiting the home page in [countryCode] and do login, the user is logged in

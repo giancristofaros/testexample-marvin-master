@@ -1,4 +1,4 @@
-@wip
+@dev
 Feature: Registration of a new user is successful
 
   Scenario: By registering a new user in [countryCode], the registration process is successful
@@ -28,7 +28,7 @@ Feature: Registration of a new user is successful
  Where:
  countryCode  | email            | password     
 # it          | test.it@yoox.com | password
- us           | testkilokal.us@yoox.com | password
+ us           | test.us@yoox.com | password
 # ie          | test.ie@yoox.com | password
 # fr          | test.fr@yoox.com | password
 # de          | test.de@yoox.com | password

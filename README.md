@@ -14,8 +14,8 @@ Un semplice esempio di utilizzo del framework marvin-js https://github.com/bruno
 
  - Installare i node_modules necessari a far funzionare marvin e le altre dipendenze tramite il comando:
  
-* `npm install chai`
-* `npm install chalk`
+        * `npm install chai`
+        * `npm install chalk`
 * `npm install selenium-webdriver`
 * `npm install nconf`
 * `npm install marvin-js`

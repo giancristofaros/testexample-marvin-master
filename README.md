@@ -4,7 +4,7 @@ Un semplice esempio di utilizzo del framework marvin-js https://github.com/bruno
 
 ##Prerequisiti:
 
-- Installare node js
+- Installare node js ( https://nodejs.org/en/download/ )
 
  ###Come far partire il test automatico:
  

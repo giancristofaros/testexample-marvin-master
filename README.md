@@ -6,7 +6,7 @@ Un semplice esempio di utilizzo del framework marvin-js https://github.com/bruno
 
 - Installare node js
 
- ##Come far partire questo test su Valentino:
+ ##Come far partire il test automatico:
  
  - Scaricare o clonare il repository sul desktop ( Ad esempio nella cartella C: ) 
  - Posizionarsi nella cartella che ospita il repository ( Nel nostro caso sarà: C:\valentino-marvin-master ) e aprire il prompt dei comandi.

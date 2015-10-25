@@ -10,8 +10,8 @@ Feature: The login process is working properly
 
     Where:
     countryCode  | username         | password
-    # it           | test.it@yoox.com | password
-    us           | test.us@yoox.com | password
+     it           | test.it@yoox.com | password
+    #us           | test.us@yoox.com | password
     # ie           | test.ie@yoox.com | password
     # fr           | test.fr@yoox.com | password
     # de           | test.de@yoox.com | password

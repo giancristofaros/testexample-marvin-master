@@ -1,0 +1,3 @@
+{
+  "ISOCODE": { "regexp": "(\\w{2})", "flags": "i" }
+}

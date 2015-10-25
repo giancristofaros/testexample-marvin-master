@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Test report</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+	<link rel="stylesheet" href="../assets/main.min.css">
+</head>
+<body class="{{#if stats.failures}}has-failures{{/if}}">
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			{{#with stats}}
+				<div class="navbar-brand">
+					<span class="text">
+						{{#if failures}}
+							{{i18n 'marvin_failed'}}
+						{{else}}
+							{{i18n 'marvin_successful'}}
+						{{/if}}
+					</span>
+				</div>
+				<ul class="stats">
+					<li class="passes"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
+					<li class="failures"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
+					<li><span class="text">{{i18n 'skipped'}}:</span> <span class="value">{{skipped}}</span></li>
+					<li><span class="text">{{i18n 'duration'}}:</span> <span class="value">{{duration}}s</span></li>
+					<li><span class="text">{{i18n 'threads'}}:</span> <span class="value">{{threads}}</span></li>
+				</ul>
+			{{/with}}
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<h1 class="page-title">{{i18n 'title'}}</h1>
+
+		<ul id="browsers-list">
+			{{#each browsers}}
+				<li role="presentation" class="browser-tab {{#if @first}}active{{/if}}">
+					<a class="browser" href="#{{@key}}">
+						<span class="icon sprt-{{sprite browserName}}"></span>
+						<span class="info">
+							<span class="name">{{browserName}}{{#ifCond version '||' browser_version}} {{version}}{{browser_version}}{{/ifCond}}</span>
+							{{#ifCond platform '||' os}}<span class="platform">{{platform}}{{os}} {{os_version}}</span>{{/ifCond}}
+						</span>
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+
+		<div class="tab-content">
+			{{#each browsers}}
+				<div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{@key}}" aria-labelledby="#{{@key}}">
+				{{#if insights}}
+					<section id="insights">
+						{{> _insights}}
+					</section>
+				{{/if}}
+				{{#features}}
+					<section class="feature">
+						<h3>
+							{{#with annotations}}
+								{{#if filename}}
+									<span class="label label-primary" title="{{filename}}">?</span>
+								{{/if}}
+							{{/with}}
+							<span class="feature-title">{{i18n 'feature'}}: {{title}}</span>
+						</h3>
+						<div class="feature-description">
+							{{#each description}}
+								<p>{{ this }}</p>
+							{{/each}}
+						</div>
+
+						{{#scenarios}}
+							<div class="scenario">
+								<div class="scenario-header dd">
+									<div class="arrow pull-left"></div>
+									{{#ifEqual status 'pass'}}
+										<span class="label label-success">{{i18n 'success'}}</span>
+									{{/ifEqual}}
+									{{#ifEqual status 'pending'}}
+										<span class="label label-primary">{{i18n 'pending'}}</span>
+									{{/ifEqual}}
+									{{#ifEqual status 'fail'}}
+										<span class="label label-danger">{{i18n 'failed'}}</span>
+									{{/ifEqual}}
+									<span class="scenario-text">{{i18n 'scenario'}}: {{title}}</span>
+								</div>
+								<div class="scenario-content dd-content">
+									{{#steps}}
+										<div class="step">
+											{{#ifEqual status 'pass'}}
+												<div class="step-results {{#ifCond logs.length '||' screenshots.length}}dd{{/ifCond}}">
+													{{#ifCond logs.length '||' screenshots.length}}<div class="arrow pull-left"></div>{{/ifCond}}
+													{{#if logs}}<div class="logs-icon pull-right">{{> _logsSvg}}</div>{{/if}}
+													{{#if screenshots}}<div class="screenshots-icon pull-right">{{> _screenshotsSvg}}</div>{{/if}}
+													<span class="label label-success">{{i18n 'success'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
+												{{#ifCond logs.length '||' screenshots.length}}
+													<div class="step-logs dd-content">
+														{{> _logs}}
+														{{> _screenshots}}
+													</div>
+												{{/ifCond}}
+											{{/ifEqual}}
+
+											{{#ifEqual status 'pending'}}
+												<div class="step-results">
+													<span class="label label-primary">{{i18n 'pending'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
+											{{/ifEqual}}
+
+											{{#ifEqual status 'fail'}}
+												<div class="step-results {{#if logs}}dd{{/if}}">
+													{{#if logs}}
+														<div class="arrow pull-left"></div>
+														<div class="logs-icon pull-right">{{> _logsSvg}}</div>
+													{{/if}}
+													<span class="label label-danger">{{i18n 'failed'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
+
+												{{#if logs}}
+													<div class="step-logs dd-content">
+														{{> _logs}}
+													</div>
+												{{/if}}
+
+												<div class="error-info">
+													<pre class="bg-danger text-danger">{{error}}</pre>
+													<ul class="list-unstyled screenshots">
+														{{#screenshots}}
+														<li>
+															<img class="img-responsive" src="./screenshots/{{ this }}">
+														</li>
+														{{/screenshots}}
+													</ul>
+												</div>
+											{{/ifEqual}}
+
+											{{#ifEqual status 'skipped'}}
+												<div class="step-results">
+													<span class="label label-warning">{{i18n 'skipped'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
+											{{/ifEqual}}
+										</div>
+									{{/steps}}
+								</div>
+							</div>
+						{{/scenarios}}
+					</section>
+				{{/features}}
+				</div>
+			{{/each}}
+		</div>
+	</div>
+
+	<script src="../assets/js/jquery-1.9.1.js"></script>
+	<script src="../assets/js/tab.js"></script>
+
+	<script type="text/javascript">
+		$(function () {
+			$("#browsers-list a").click(function(e) {
+				e.preventDefault();
+				$(this).tab('show');
+			});
+			$(".dd").click(function () {
+				$dd = $(this)
+					.toggleClass('open')
+					.next(".dd-content")
+					.slideToggle(300);
+			});
+		});
+	</script>
+</body>
+</html>

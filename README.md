@@ -9,7 +9,7 @@ Un semplice esempio di utilizzo del framework marvin-js https://github.com/bruno
  ###Come far partire il test automatico:
  
  - Scaricare o clonare il repository sul desktop ( Ad esempio nella cartella C: ) 
- - Posizionarsi nella cartella che ospita il repository ( Nel nostro caso sarà: C:\valentino-marvin-master ) e aprire il prompt dei comandi.
+ - Posizionarsi nella cartella che ospita il repository ( Nel nostro caso sarà: C:\testexample-marvin-master ) e aprire il prompt dei comandi.
  - Installare i node_modules necessari a far funzionare marvin e le altre dipendenze tramite il comando:
   
   - npm install chalk

@@ -14,16 +14,16 @@ Un semplice esempio di utilizzo del framework marvin-js https://github.com/bruno
 
  - Installare i node_modules necessari a far funzionare marvin e le altre dipendenze tramite il comando:
  
-* `baseUrl`
- *npm install selenium-webdriver
- *npm install nconf
- *npm install marvin-js
- *npm install mocha
- *npm install yadda
- *npm install wrench
- *npm install handlebars
- *npm install glob
- *npm install chalk
+* `npm install chai`
+* `npm install chalk`
+* `npm install selenium-webdriver`
+* `npm install nconf`
+* `npm install marvin-js`
+* `npm install mocha`
+* `npm install yadda`
+* `npm install wrench`
+* `npm install handlebars`
+* `npm install glob`
 
 ###Comando per far partire il test:
 

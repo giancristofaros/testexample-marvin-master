@@ -1,5 +1,5 @@
 
-var moonraker = require("marvin-js");
+var marvin = require("marvin-js");
 var session = require('marvin-js').session;
 //var chalk = require("chalk");
 var homePage = require('../pages/home-page');
@@ -14,7 +14,7 @@ exports.define = function (steps) {
      * */
     steps.given(/I visit the home page in $countryCode/, function (countryCode) {
 	
-        var url = moonraker.config.baseUrl + "/" + countryCode;
+        var url = marvin.config.baseUrl + "/" + countryCode;
 		//alert(url);
         session.getDriver().get(url);
 

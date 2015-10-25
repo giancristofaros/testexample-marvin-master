@@ -1,28 +1,32 @@
+
 var chalk = require("chalk")
   , Component = require('marvin-js').Component
   , session = require('marvin-js').session
-  , utils = require('../utils/utils');
+  , clickOnElement = require('../utils/clickOnElement');
+
+
+  //, utils = require('../utils/utils.js');
 
 module.exports = new Component({
 
     // the button that allows to open the menu
     menuBtn: {
         get: function () {
-            return this.element('[data-target="mainmenu"]');
+            return this.element('#mainNav [data-menutype="woman"]');
         }
     },
 
     // the menu container
     menuBox: {
         get: function () {
-            return this.element('#mainmenu');
+            return this.element('#menuContainer');
         }
     },
 
     // the first link, of the first first-level menu item
-    firstLevelLink: {
+    firstLink: {
         get: function () {
-            return this.element('((//div[@data-level="1"])[4]//a)[1]', 'xpath');
+            return this.element('.//*[@id=\'containerScroll\']/div/div/div[1]/div[1]/div[2]/ul/li[2]/a', 'xpath');
         }
     },
 
@@ -55,10 +59,10 @@ module.exports = new Component({
     /*
      * Used to open the menu, and then click on "firstLevelLink"
      * */
-    clickFirstLevelLink: {
+    clickFirstLink: {
         value: function () {
             this.show();
-            return this.firstLevelLink.click();
+            return clickOnElement(this.firstLink);//this.firstLink.click();
         }
     },
 

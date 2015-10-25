@@ -1,5 +1,5 @@
 (function () {
-    var marvin-js = require("marvin-js")
+    var marvin-js = require("marvin-js");
       , session = marvin-js.session
       , driver = session.getDriver()
       , webdriver = session.getWebDriver()

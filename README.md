@@ -25,6 +25,6 @@ Un semplice esempio di utilizzo del framework marvin-js https://github.com/bruno
         - `npm install handlebars`
         - `npm install glob`
 
-##Comando per far partire il test:
+ - Infine lanciare `npm test` ( Partiranno tutti i test sulle feature presenti nella cartella Feature con il tag dev, per modificare queste impostazioni far riferimento al link del progetto: https://github.com/brunoscopelliti/marvin#feature-tags )
 
-`npm test` ( Partiranno tutti i test sulle feature presenti nella cartella Feature con il tag dev, per modificare queste impostazioni far riferimento al link del progetto: https://github.com/brunoscopelliti/marvin#feature-tags )
+

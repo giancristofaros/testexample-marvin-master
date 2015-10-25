@@ -12,7 +12,7 @@ Un semplice esempio di utilizzo del framework marvin-js https://github.com/bruno
  
  - Posizionarsi nella cartella che ospita il repository ( Nel nostro caso sarà: C:\testexample-marvin-master ) e aprire il prompt dei comandi.
 
- - Installare i node_modules necessari a far funzionare marvin e le altre dipendenze tramite il comando:
+ - Installare i node_modules necessari a far funzionare marvin e le altre dipendenze tramite i comandi:
  
         - `npm install chai`
         - `npm install chalk`

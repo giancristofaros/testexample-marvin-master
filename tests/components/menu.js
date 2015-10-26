@@ -2,7 +2,10 @@
 var chalk = require("chalk")
   , Component = require('marvin-js').Component
   , session = require('marvin-js').session
-  , clickOnElement = require('../utils/clickOnElement');
+  , clickOnElement = require('../utils/clickOnElement')
+  , webdriver = require('selenium-webdriver')
+  , driver = session.getDriver()
+  , By = webdriver.By
 
 
   //, utils = require('../utils/utils.js');
@@ -26,7 +29,8 @@ module.exports = new Component({
     // the first link, of the first first-level menu item
     firstLink: {
         get: function () {
-            return this.element('.//*[@id=\'containerScroll\']/div/div/div[1]/div[1]/div[2]/ul/li[2]/a', 'xpath');
+            return driver.findElement(By.xpath(".//*[@id='containerScroll']/div/div/div[1]/div[1]/div[2]/ul/li[1]/a"));
+            //return this.element('.//*[@id=\'containerScroll\']/div/div/div[1]/div[1]/div[2]/ul/li[2]/a', 'xpath');
         }
     },
 

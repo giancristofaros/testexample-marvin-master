@@ -40,6 +40,10 @@ exports.define = function (steps) {
      * @description 
      * */
     steps.when(/I select the category/, function () {
+        
+        var driver = session.getDriver();
+        driver.sleep(4000);
+        
         searchPage.menu.clickFirstLink();
         //searchPage.menu.click();
     });

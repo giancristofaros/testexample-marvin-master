@@ -27,10 +27,13 @@ exports.define = function (steps) {
      * @description Should be used when the search page is loaded, to assert that should be at least one item.
      * */
     steps.then(/I should see at least one item in search result page/, function () {
-        var query = searchPage.products;
+        
+        assert(searchPage.products.isDisplayed());
+        
+        /*var query = searchPage.products;
         query.then(function (products) {
             expect(products.length).to.be.at.least(1);
-        });
+        });*/
     });
 
 };

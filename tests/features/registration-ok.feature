@@ -1,4 +1,4 @@
-@wip
+@dev
 Feature: Registration of a new user is successful
 
   Scenario: By registering a new user in [countryCode], the registration process is successful

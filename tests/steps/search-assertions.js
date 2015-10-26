@@ -1,6 +1,7 @@
 var session = require('marvin-js').session;
 var assert = require("chai").assert;
 var searchPage = require('../pages/search-page');
+var clickOnElement = require('../utils/clickOnElement');
 
 exports.define = function (steps) {
 
@@ -28,7 +29,7 @@ exports.define = function (steps) {
      * */
     steps.then(/I should see at least one item in search result page/, function () {
         
-        assert(searchPage.products.isDisplayed());
+        searchPage.waitFor(clickOnElement(searchPage.products));
         
         /*var query = searchPage.products;
         query.then(function (products) {

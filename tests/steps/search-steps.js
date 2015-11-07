@@ -31,6 +31,10 @@ exports.define = function (steps) {
      * */
     steps.when(/I select gender/, function () {
         searchPage.waitFor(clickOnElement(searchPage.menu.menuBtn));
+        console.log(chalk.bold.green("Scrivi '" + searchPage.menu.menuBtn + "'"));
+        
+        var driver = session.getDriver();
+        driver.sleep(8000);
         //searchPage.menu.click();
     });
     
@@ -43,7 +47,7 @@ exports.define = function (steps) {
         
         var driver = session.getDriver();
         driver.sleep(4000);
-        
+        searchPage.waitFor(clickOnElement(searchPage.menu.closeMenuBox));
         searchPage.menu.clickFirstLink();
         //searchPage.menu.click();
     });

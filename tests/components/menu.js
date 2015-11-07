@@ -29,7 +29,9 @@ module.exports = new Component({
     // the first link, of the first first-level menu item
     firstLink: {
         get: function () {
-            return driver.findElement(By.xpath(".//*[@id='containerScroll']/div/div/div[1]/div[1]/div[2]/ul/li[1]/a"));
+            var element = driver.findElement(By.xpath(".//*[@id='containerScroll']/div/div/div[1]/div[1]/div[2]/ul/li[1]/a")).getText();
+            console.log(element);
+            return element;
             //return this.element('.//*[@id=\'containerScroll\']/div/div/div[1]/div[1]/div[2]/ul/li[2]/a', 'xpath');
         }
     },

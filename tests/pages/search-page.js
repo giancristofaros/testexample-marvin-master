@@ -1,7 +1,7 @@
 var session = require('marvin-js').session;
 var Page = require('marvin-js').Page;
 
-//var disableCssTransitions = require('../utils/disable-transitions.js');
+var disableCssTransitions = require('../utils/disable-transitions.js');
 
 var homePage = require('../pages/home-page');
 
@@ -11,7 +11,7 @@ var menuComponent = require('../components/menu');
 module.exports = new Page({
 
     url: {value: '/'},
-/*
+
     onLoad: {
         value: function () {
             // remove transition, and loadings
@@ -23,7 +23,7 @@ module.exports = new Page({
         value: function () {
             return disableCssTransitions();
         }
-    },*/
+    },
 
     menu: {
         get: function () {

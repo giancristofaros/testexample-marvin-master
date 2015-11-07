@@ -1,4 +1,4 @@
-@wip
+@dev
 
 Feature: Search
 As a User I want to search for item So that I can select the item
